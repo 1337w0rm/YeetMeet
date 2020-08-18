@@ -25,5 +25,7 @@
       {
       	"url": "https://github.com/heroku/heroku-buildpack-chromedriver"
       }
-    ]
+    ],
+    
+    "stack": "heroku-16"
 }
