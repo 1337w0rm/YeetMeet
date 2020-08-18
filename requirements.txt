@@ -1,0 +1,3 @@
+python_telegram_bot==12.5.1
+selenium==3.141.0
+pause==0.2
