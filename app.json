@@ -17,6 +17,9 @@
 
   	"buildpacks": [
       {
+        "url": "heroku/python"
+      },
+      {
         "url": "https://github.com/1337w0rm/heroku-buildpack-google-chrome"
       },
       {
