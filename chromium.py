@@ -26,7 +26,7 @@ updater = Updater(token = Config.BOT_TOKEN, use_context=True)
 dp = updater.dispatcher
 
 
-mode= os.environ['DEV']
+mode="dev"
 
 if mode == "dev":
     def run(updater):
@@ -48,7 +48,6 @@ def shutdown():
 
 def meet(update,context):
 	logging.info("DOING")
-
 	context.bot.send_chat_action(chat_id=update.message.chat_id, action=ChatAction.TYPING)
 	usernameStr = os.environ['USERNAME']
 	passwordStr = os.environ['PASSWORD']
