@@ -43,10 +43,10 @@ def meet(update,context):
 	  })
 	browser = webdriver.Chrome(options=options)
 
-	browser.get('https://accounts.google.com/ServiceLogin?ltmpl=meet&continue=https%3A%2F%2Fmeet.google.com%3Fhs%3D193&')
+	# browser.get('https://accounts.google.com/ServiceLogin?ltmpl=meet&continue=https%3A%2F%2Fmeet.google.com%3Fhs%3D193&')
 
-	# browser.get('https://stackoverflow.com/users/login?ssrc=head&returnurl=https%3a%2f%2fstackoverflow.com%2f')
-	# browser.find_element_by_xpath('//*[@id="openid-buttons"]/button[1]').click()
+	browser.get('https://stackoverflow.com/users/login?ssrc=head&returnurl=https%3a%2f%2fstackoverflow.com%2f')
+	browser.find_element_by_xpath('//*[@id="openid-buttons"]/button[1]').click()
 
 	username = browser.find_element_by_id('identifierId')
 	username.send_keys(usernameStr)
