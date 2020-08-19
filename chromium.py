@@ -15,8 +15,8 @@ from config import Config
 import threading
 
 #######YEAR#MONTH#DAY#HOUR#MINUTE###### DO NOT PUT ZERO BEFORE A NUMBER
-# pause.###until(#datetime(2020, 3, 27, 11, 29))
-##AIL & PASSWORD (THE MAIL U WILL USE TO ENTER TO THE MEET)
+# pause.until(datetime(2020, 3, 27, 11, 29))
+# MAIL & PASSWORD (THE MAIL U WILL USE TO ENTER TO THE MEET)
 
 #Logger
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -40,6 +40,7 @@ elif mode == "prod":
                               url_path=Config.BOT_TOKEN)
         updater.bot.set_webhook("https://{}.herokuapp.com/{}".format(Config.HEROKU_APP_NAME, Config.BOT_TOKEN))
 
+
 def shutdown():
     updater.stop()
     updater.is_idle = False
@@ -47,7 +48,6 @@ def shutdown():
 
 def meet(update,context):
 	logging.info("DOING")
-	context.bot.send_chat_action(chat_id=update.message.chat_id, action=ChatAction.TYPING)
 	usernameStr = os.environ['USERNAME']
 	passwordStr = os.environ['PASSWORD']
 	url_meet = update.message.text.split()[-1]
@@ -63,11 +63,11 @@ def meet(update,context):
 	  })
 	browser = webdriver.Chrome(options=options)
 
-	# browser.get('https://accounts.google.com/ServiceLogin?ltmpl=meet&continue=https%3A%2F%2Fmeet.google.com%3Fhs%3D193&')
+	browser.get('https://accounts.google.com/ServiceLogin?ltmpl=meet&continue=https%3A%2F%2Fmeet.google.com%3Fhs%3D193&')
 
-	browser.get('https://stackoverflow.com/users/login?ssrc=head&returnurl=https%3a%2f%2fstackoverflow.com%2f')
-	browser.find_element_by_xpath('//*[@id="openid-buttons"]/button[1]').click()
-
+	# browser.get('https://stackoverflow.com/users/login?ssrc=head&returnurl=https%3a%2f%2fstackoverflow.com%2f')
+	# browser.find_element_by_xpath('//*[@id="openid-buttons"]/button[1]').click()
+	context.bot.send_chat_action(chat_id=update.message.chat_id, action=ChatAction.TYPING)
 	username = browser.find_element_by_id('identifierId')
 	username.send_keys(usernameStr)
 	nextButton = browser.find_element_by_id('identifierNext')
