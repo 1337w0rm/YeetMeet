@@ -48,6 +48,7 @@ def shutdown():
 
 def meet(update,context):
 	logging.info("DOING")
+	context.bot.send_chat_action(chat_id=update.message.chat_id, action=ChatAction.TYPING)
 	usernameStr = os.environ['USERNAME']
 	passwordStr = os.environ['PASSWORD']
 	url_meet = update.message.text.split()[-1]
@@ -63,11 +64,11 @@ def meet(update,context):
 	  })
 	browser = webdriver.Chrome(options=options)
 
-	browser.get('https://accounts.google.com/ServiceLogin?ltmpl=meet&continue=https%3A%2F%2Fmeet.google.com%3Fhs%3D193&')
+	# browser.get('https://accounts.google.com/ServiceLogin?ltmpl=meet&continue=https%3A%2F%2Fmeet.google.com%3Fhs%3D193&')
 
-	# browser.get('https://stackoverflow.com/users/login?ssrc=head&returnurl=https%3a%2f%2fstackoverflow.com%2f')
-	# browser.find_element_by_xpath('//*[@id="openid-buttons"]/button[1]').click()
-	context.bot.send_chat_action(chat_id=update.message.chat_id, action=ChatAction.TYPING)
+	browser.get('https://stackoverflow.com/users/login?ssrc=head&returnurl=https%3a%2f%2fstackoverflow.com%2f')
+	browser.find_element_by_xpath('//*[@id="openid-buttons"]/button[1]').click()
+	
 	username = browser.find_element_by_id('identifierId')
 	username.send_keys(usernameStr)
 	nextButton = browser.find_element_by_id('identifierNext')
