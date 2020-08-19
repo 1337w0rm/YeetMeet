@@ -11,7 +11,6 @@ import os
 import logging
 from telegram.ext import Updater, CommandHandler
 from telegram import ChatAction
-from functools import wraps
 from config import Config
 import threading
 
@@ -41,28 +40,14 @@ elif mode == "prod":
                               url_path=Config.BOT_TOKEN)
         updater.bot.set_webhook("https://{}.herokuapp.com/{}".format(Config.HEROKU_APP_NAME, Config.BOT_TOKEN))
 
-def send_action(action):
-    """Sends `action` while processing func command."""
-
-    def decorator(func):
-        @wraps(func)
-        def command_func(update, context, *args, **kwargs):
-            context.bot.send_chat_action(chat_id=update.effective_message.chat_id, action=action)
-            return func(update, context,  *args, **kwargs)
-        return command_func
-    
-    return decorator
-
-send_typing_action = send_action(ChatAction.TYPING)
-
 def shutdown():
     updater.stop()
     updater.is_idle = False
     updater.start_polling()
 
-@send_typing_action
 def meet(update,context):
 	logging.info("DOING")
+	context.bot.send_chat_action(chat_id=update.message.chat_id, action=ChatAction.TYPING)
 	usernameStr = os.environ['USERNAME']
 	passwordStr = os.environ['PASSWORD']
 	url_meet = update.message.text.split()[-1]
