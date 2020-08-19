@@ -14,7 +14,16 @@
 
     "USERNAME": {
       "description": "Google Account username/Email."
-    	}
+    	},
+
+    "HEROKU_APP_NAME": {
+      "description": "Heroku App Name."
+      },
+      
+    "DEV": {
+      "description": "Development type dev/prod"
+      }
+
   	},
 
   	"buildpacks": [
