@@ -10,6 +10,8 @@ import pause
 import os
 import logging
 from telegram.ext import Updater, CommandHandler
+from telegram import ChatAction
+from functools import wraps
 from config import Config
 import threading
 
