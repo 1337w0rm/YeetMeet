@@ -61,10 +61,10 @@ def meet(update,context):
 	  })
 	browser = webdriver.Chrome(options=options)
 
-	# browser.get('https://accounts.google.com/signin/v2/identifier')
+	browser.get('https://accounts.google.com/ServiceLogin?ltmpl=meet&continue=https%3A%2F%2Fmeet.google.com%3Fhs%3D193&')
 
-	browser.get('https://stackoverflow.com/users/login?ssrc=head&returnurl=https%3a%2f%2fstackoverflow.com%2f')
-	browser.find_element_by_xpath('//*[@id="openid-buttons"]/button[1]').click()
+	# browser.get('https://stackoverflow.com/users/login?ssrc=head&returnurl=https%3a%2f%2fstackoverflow.com%2f')
+	# browser.find_element_by_xpath('//*[@id="openid-buttons"]/button[1]').click()
 
 	username = browser.find_element_by_id('identifierId')
 	username.send_keys(usernameStr)
@@ -73,6 +73,7 @@ def meet(update,context):
 	time.sleep(7)
 
 	browser.save_screenshot("ss.png")
+	context.bot.send_chat_action(chat_id=update.message.chat_id, action=ChatAction.UPLOAD_PHOTO)
 	mid = context.bot.send_photo(chat_id=update.message.chat_id, photo=open('ss.png', 'rb'), timeout = 120).message_id
 	print(mid)
 	os.remove('ss.png')
@@ -86,11 +87,13 @@ def meet(update,context):
 	context.bot.delete_message(chat_id=update.message.chat_id ,message_id = mid)
 
 	browser.save_screenshot("ss.png")
+	context.bot.send_chat_action(chat_id=update.message.chat_id, action=ChatAction.UPLOAD_PHOTO)
 	mid = context.bot.send_photo(chat_id=update.message.chat_id, photo=open('ss.png', 'rb'), timeout = 120).message_id
 	os.remove('ss.png')
 
 	if(browser.find_elements_by_xpath('//*[@id="authzenNext"]/div/button/div[2]')):
 		
+		context.bot.send_chat_action(chat_id=update.message.chat_id, action=ChatAction.TYPING)
 		context.bot.send_message(chat_id=update.message.chat_id, text="Need Verification. Please Verify")
 		browser.find_element_by_xpath('//*[@id="authzenNext"]/div/button/div[2]').click()
 		time.sleep(5)
@@ -98,6 +101,7 @@ def meet(update,context):
 		context.bot.delete_message(chat_id=update.message.chat_id ,message_id = mid)
 
 		browser.save_screenshot("ss.png")
+		context.bot.send_chat_action(chat_id=update.message.chat_id, action=ChatAction.UPLOAD_PHOTO)
 		mid = context.bot.send_photo(chat_id=update.message.chat_id, photo=open('ss.png', 'rb'), timeout = 120).message_id
 		os.remove('ss.png')
 		time.sleep(20)
@@ -108,6 +112,7 @@ def meet(update,context):
 	context.bot.delete_message(chat_id=update.message.chat_id ,message_id = mid)
 
 	browser.save_screenshot("ss.png")
+	context.bot.send_chat_action(chat_id=update.message.chat_id, action=ChatAction.UPLOAD_PHOTO)
 	mid  = context.bot.send_photo(chat_id=update.message.chat_id, photo=open('ss.png', 'rb'), caption="Test", timeout = 120).message_id
 	os.remove('ss.png')
 
@@ -118,6 +123,7 @@ def meet(update,context):
 		context.bot.delete_message(chat_id=update.message.chat_id ,message_id = mid)
 
 		browser.save_screenshot("ss.png")
+		context.bot.send_chat_action(chat_id=update.message.chat_id, action=ChatAction.UPLOAD_PHOTO)
 		mid = context.bot.send_photo(chat_id=update.message.chat_id, photo=open('ss.png', 'rb'), timeout = 120).message_id
 		os.remove('ss.png')
 	
@@ -127,11 +133,20 @@ def meet(update,context):
 	context.bot.delete_message(chat_id=update.message.chat_id ,message_id = mid)
 
 	browser.save_screenshot("ss.png")
+	context.bot.send_chat_action(chat_id=update.message.chat_id, action=ChatAction.UPLOAD_PHOTO)
 	mid = context.bot.send_photo(chat_id=update.message.chat_id, photo=open('ss.png', 'rb'), timeout = 120).message_id
 	os.remove('ss.png')
 	time.sleep(5)
 
 	context.bot.delete_message(chat_id=update.message.chat_id ,message_id = mid)
+	time.sleep(10)
+
+	browser.save_screenshot("ss.png")
+	context.bot.send_chat_action(chat_id=update.message.chat_id, action=ChatAction.UPLOAD_PHOTO)
+	mid = context.bot.send_photo(chat_id=update.message.chat_id, photo=open('ss.png', 'rb'), timeout = 120).message_id
+	os.remove('ss.png')
+
+	context.bot.send_chat_action(chat_id=update.message.chat_id, action=ChatAction.TYPING)
 	context.bot.send_message(chat_id=update.message.chat_id, text="Attending you lecture. You can chill :v")
 
 	pause
