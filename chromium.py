@@ -39,11 +39,26 @@ elif mode == "prod":
                               url_path=Config.BOT_TOKEN)
         updater.bot.set_webhook("https://{}.herokuapp.com/{}".format(Config.HEROKU_APP_NAME, Config.BOT_TOKEN))
 
+def send_action(action):
+    """Sends `action` while processing func command."""
+
+    def decorator(func):
+        @wraps(func)
+        def command_func(update, context, *args, **kwargs):
+            context.bot.send_chat_action(chat_id=update.effective_message.chat_id, action=action)
+            return func(update, context,  *args, **kwargs)
+        return command_func
+    
+    return decorator
+
+send_typing_action = send_action(ChatAction.TYPING)
+
 def shutdown():
     updater.stop()
     updater.is_idle = False
     updater.start_polling()
 
+@send_chat_action
 def meet(update,context):
 	logging.info("DOING")
 	usernameStr = os.environ['USERNAME']
