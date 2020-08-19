@@ -10,16 +10,34 @@ import pause
 import os
 import logging
 from telegram.ext import Updater, CommandHandler
+from config import Config
 import threading
 
+#######YEAR#MONTH#DAY#HOUR#MINUTE###### DO NOT PUT ZERO BEFORE A NUMBER
+# pause.###until(#datetime(2020, 3, 27, 11, 29))
+##AIL & PASSWORD (THE MAIL U WILL USE TO ENTER TO THE MEET)
 
 #Logger
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     level=logging.INFO)
 
-updater = Updater(token = os.environ['BOT_TOKEN'], use_context=True)
+updater = Updater(token = Config.BOT_TOKEN, use_context=True)
 dp = updater.dispatcher
 
+
+mode="dev"
+
+if mode == "dev":
+    def run(updater):
+        updater.start_polling()
+elif mode == "prod":
+    def run(updater):
+        PORT = int(os.environ.get("PORT", "8443"))
+        # Code from https://github.com/python-telegram-bot/python-telegram-bot/wiki/Webhooks#heroku
+        updater.start_webhook(listen="0.0.0.0",
+                              port=PORT,
+                              url_path=Config.BOT_TOKEN)
+        updater.bot.set_webhook("https://{}.herokuapp.com/{}".format(Config.HEROKU_APP_NAME, Config.BOT_TOKEN))
 
 def shutdown():
     updater.stop()
@@ -43,7 +61,7 @@ def meet(update,context):
 	  })
 	browser = webdriver.Chrome(options=options)
 
-	# browser.get('https://accounts.google.com/ServiceLogin?ltmpl=meet&continue=https%3A%2F%2Fmeet.google.com%3Fhs%3D193&')
+	# browser.get('https://accounts.google.com/signin/v2/identifier')
 
 	browser.get('https://stackoverflow.com/users/login?ssrc=head&returnurl=https%3a%2f%2fstackoverflow.com%2f')
 	browser.find_element_by_xpath('//*[@id="openid-buttons"]/button[1]').click()
@@ -123,7 +141,7 @@ def meet(update,context):
 def main():
 	dp.add_handler(CommandHandler("meet", meet))
 	logging.info("Bot started")
-	updater.start_polling()
+	run(updater)
 
 if __name__ == '__main__':
     main()
