@@ -21,8 +21,9 @@ YEET MEET is a telegram bot which can be deployed to a server, heroku or on your
 **One Click Deploy**
 
 > Note: In one click deploy you will have to re-login every day.
-[!
-[Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/1337w0rm/YeetMeet)
+
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/1337w0rm/YeetMeet)
 
 **Conventional Deploy**
 
