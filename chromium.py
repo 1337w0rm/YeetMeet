@@ -30,8 +30,8 @@ def meet(update,context):
 	logging.info("DOING")
 	try:
 		context.bot.send_chat_action(chat_id=update.message.chat_id, action=ChatAction.TYPING)
-		usernameStr = os.environ('USERNAME')
-		passwordStr = os.environ('PASSWORD')
+		usernameStr = Config.USERNAME
+		passwordStr = Config.PASSWORD
 		url_meet = update.message.text.split()[-1]
 		options = webdriver.ChromeOptions()
 		options.add_argument("--headless")
