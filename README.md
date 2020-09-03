@@ -1,6 +1,31 @@
+
 # YEET MEET
 
-YEET MEET is a telegram bot which can be deployed to a server, heroku or on your local machine. It can attend your google meet classes for you.
+YEET MEET is a telegram bot which can be deployed to a server, heroku or on your local machine. It can attend your Google Meet and Zoom classes for you.
+
+## Bot Commands
+
+    /meet - Command to join Google Meet classes or metting
+    /zoom - Command to join Zoom Meeting
+    /status - Sends screenshot of the web page
+    /close - Closes all browser window
+    /restart - Restarts the script
+## Usage
+	
+	Join Google Meeting
+    /meet https://meet.google.com/agr-ghts-ade
+    
+    Join Zoom Meeting
+    /zoom 12354674654 ax56rR
+	
+	Close all browser window
+    /close
+
+    Get screenshot of the web page
+    /status
+
+    Restart the script
+    /restart
 
 ## Deploy to Local Machine and Server
 
