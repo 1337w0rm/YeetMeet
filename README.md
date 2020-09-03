@@ -7,7 +7,7 @@ Note: You'll need to have signed up on Zoom with your google account.
 
 ## Bot Commands
 
-    /meet - Command to join Google Meet classes or metting
+    /meet - Command to join Google Meet classes or meeting
     /zoom - Command to join Zoom Meeting
     /status - Sends screenshot of the web page
     /close - Closes all browser window
