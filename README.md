@@ -43,8 +43,10 @@ YEET MEET is a telegram bot which can be deployed to a server, heroku or on your
  5. `python chromium.py`
  6. Login to your Google Account.
  7. Now through Heroku-CLI login to your Heroku account
- 8. Create a Heroku App `heroku create appname`
- 9. Select this app in your Heroku-CLI `heroku git:remote -a appname`
- 10. Commit the changes `git commit -am "Your commit message"`
- 11. Push Code to Heroku `git push heroku master`
- 12. Scale the dynos `heroku ps:scale worker=1`
+ 8. Create a Heroku App `heroku create appname --buildpack heroku/python`
+ 9. Set Chromedriver Builpack `heroku buildpacks:set https://github.com/heroku/heroku-buildpack-chromedriver -a appname`
+ 10. Set Google Chrome buildpack `heroku buildpacks:set https://github.com/1337w0rm/heroku-buildpack-google-chrome -a appname`
+ 11. Select this app in your Heroku-CLI `heroku git:remote -a appname`
+ 12. Commit the changes `git commit -am "Your commit message"`
+ 13. Push Code to Heroku `git push heroku master`
+ 14. Scale the dynos `heroku ps:scale worker=1`
