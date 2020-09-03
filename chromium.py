@@ -61,8 +61,7 @@ def zoom(update, context):
 		
 		usernameStr = Config.USERNAME
 		passwordStr = Config.PASSWORD
-
-		nameStr = "ADITYA SINGH"
+		
 		url_meet = update.message.text.split()[1]
 		passStr = update.message.text.split()[2]
 
