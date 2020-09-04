@@ -41,6 +41,7 @@ browser = webdriver.Chrome(options=options)
 def restart(update, context):
     restart_message = context.bot.send_message(chat_id=update.message.chat_id, text="Restarting, Please wait!")
     # Save restart message object in order to reply to it after restarting
+    browser.quit()
     with open('restart.pickle', 'wb') as status:
         pickle.dump(restart_message, status)
     execl(executable, executable, "chromium.py")
@@ -50,9 +51,6 @@ def status(update, context):
 	context.bot.send_chat_action(chat_id=update.message.chat_id, action=ChatAction.UPLOAD_PHOTO)
 	mid = context.bot.send_photo(chat_id=update.message.chat_id, photo=open('ss.png', 'rb'), timeout = 120).message_id
 	os.remove('ss.png')
-
-def close(update, context):
-	browser.quit()
 
 def zoom(update, context):
 	logging.info("DOING")
@@ -236,7 +234,6 @@ def main():
 	dp.add_handler(CommandHandler("meet", meet))
 	dp.add_handler(CommandHandler("restart", restart))
 	dp.add_handler(CommandHandler("status", status))
-	dp.add_handler(CommandHandler("close", close))
 	logging.info("Bot started")
 	updater.start_polling()
 

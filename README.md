@@ -8,8 +8,7 @@ YEET MEET is a telegram bot which can be deployed to a server, heroku or on your
     /meet - Command to join Google Meet classes or metting
     /zoom - Command to join Zoom Meeting
     /status - Sends screenshot of the web page
-    /close - Closes all browser window
-    /restart - Restarts the script
+    /restart - Close all the opened window and restarts the script
 ## Usage
 	
 	Join Google Meeting
@@ -18,13 +17,10 @@ YEET MEET is a telegram bot which can be deployed to a server, heroku or on your
     Join Zoom Meeting
     /zoom 12354674654 ax56rR
 	
-	Close all browser window
-    /close
-
     Get screenshot of the web page
     /status
 
-    Restart the script
+    Close all the opened window and restarts the script
     /restart
 
 ## Deploy to Local Machine and Server
@@ -69,8 +65,8 @@ YEET MEET is a telegram bot which can be deployed to a server, heroku or on your
  6. Login to your Google Account.
  7. Now through Heroku-CLI login to your Heroku account
  8. Create a Heroku App `heroku create appname --buildpack heroku/python`
- 9. Set Chromedriver Builpack `heroku buildpacks:set https://github.com/heroku/heroku-buildpack-chromedriver -a appname`
- 10. Set Google Chrome buildpack `heroku buildpacks:set https://github.com/1337w0rm/heroku-buildpack-google-chrome -a appname`
+ 9. Set Chromedriver Builpack `heroku buildpacks:add https://github.com/heroku/heroku-buildpack-chromedriver -a appname`
+ 10. Set Google Chrome buildpack `heroku buildpacks:add https://github.com/1337w0rm/heroku-buildpack-google-chrome -a appname`
  11. Select this app in your Heroku-CLI `heroku git:remote -a appname`
  12. Commit the changes `git commit -am "Your commit message"`
  13. Push Code to Heroku `git push heroku master`
