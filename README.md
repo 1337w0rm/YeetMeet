@@ -25,7 +25,7 @@ YEET MEET is a telegram bot which can be deployed to a server, heroku or on your
 
 ## Deploy to Local Machine and Server
 
-> Set ENVIRONMENT VARIABLES according to [config.py](https://github.com/1337w0rm/YeetMeet/blob/master/config.py)
+> Set ENVIRONMENT VARIABLES according to VARIABLES in [config.py](https://github.com/1337w0rm/YeetMeet/blob/master/config.py)
  OR
 See [How to edit config.py](https://github.com/1337w0rm/YeetMeet/issues/3#issuecomment-694277739)
 
@@ -50,7 +50,7 @@ See [How to edit config.py](https://github.com/1337w0rm/YeetMeet/issues/3#issuec
 > Note: Login to your Google account from your local machine first, so that you don't have to re-login again and again on Heroku.
 
 
-> Set ENVIRONMENT VARIABLES according to [config.py](https://github.com/1337w0rm/YeetMeet/blob/master/config.py)
+> Set ENVIRONMENT VARIABLES according to VARIABLES in [config.py](https://github.com/1337w0rm/YeetMeet/blob/master/config.py)
  OR
 See [How to edit config.py](https://github.com/1337w0rm/YeetMeet/issues/3#issuecomment-694277739)
 
