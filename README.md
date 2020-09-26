@@ -64,7 +64,7 @@ See [How to edit config.py](https://github.com/1337w0rm/YeetMeet/issues/3#issuec
  7. Now through Heroku-CLI login to your Heroku account
  8. Create a Heroku App `heroku create appname --buildpack heroku/python`
  9. Set Chromedriver Builpack `heroku buildpacks:add https://github.com/heroku/heroku-buildpack-chromedriver -a appname`
- 10. Set Google Chrome buildpack `heroku buildpacks:add https://github.com/1337w0rm/heroku-buildpack-google-chrome -a appname
+ 10. Set Google Chrome buildpack `heroku buildpacks:add https://github.com/1337w0rm/heroku-buildpack-google-chrome -a appname`
  11. Initialize git repository  `git init`
  12. Select this app in your Heroku-CLI `heroku git:remote -a appname`
  13. Commit the changes `git commit -am "Your commit message"`
