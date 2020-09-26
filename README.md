@@ -25,11 +25,10 @@ YEET MEET is a telegram bot which can be deployed to a server, heroku or on your
 
 ## Deploy to Local Machine and Server
 
-> Replace the variables in [config.py](https://github.com/1337w0rm/YeetMeet/blob/master/config.py)
+> Set ENVIRONMENT VARIABLES according to VARIABLES in [config.py](https://github.com/1337w0rm/YeetMeet/blob/master/config.py)
+ OR
+See [How to edit config.py](https://github.com/1337w0rm/YeetMeet/issues/3#issuecomment-694277739)
 
-    BOT_TOKEN = Your Telegram Bot Token
-    USERNAME = Your google username or email through which you want to join the meeting
-    PASSWORD = Your google account password
 
 	
  1. Download and Install Google Chrome and Chromedriver.
@@ -51,11 +50,10 @@ YEET MEET is a telegram bot which can be deployed to a server, heroku or on your
 > Note: Login to your Google account from your local machine first, so that you don't have to re-login again and again on Heroku.
 
 
-> Replace the variables in config.py
+> Set ENVIRONMENT VARIABLES according to VARIABLES in [config.py](https://github.com/1337w0rm/YeetMeet/blob/master/config.py)
+ OR
+See [How to edit config.py](https://github.com/1337w0rm/YeetMeet/issues/3#issuecomment-694277739)
 
-    BOT_TOKEN = Your Telegram Bot Token
-    USERNAME = Your google username or email through which you want to join the meeting
-    PASSWORD = Your google account password
 
 1. Download and Install Google Chrome and Chromedriver.
  2. `git clone https://github.com/1337w0rm/YeetMeet`
@@ -67,7 +65,8 @@ YEET MEET is a telegram bot which can be deployed to a server, heroku or on your
  8. Create a Heroku App `heroku create appname --buildpack heroku/python`
  9. Set Chromedriver Builpack `heroku buildpacks:add https://github.com/heroku/heroku-buildpack-chromedriver -a appname`
  10. Set Google Chrome buildpack `heroku buildpacks:add https://github.com/1337w0rm/heroku-buildpack-google-chrome -a appname`
- 11. Select this app in your Heroku-CLI `heroku git:remote -a appname`
- 12. Commit the changes `git commit -am "Your commit message"`
- 13. Push Code to Heroku `git push heroku master`
- 14. Scale the dynos `heroku ps:scale worker=1`
+ 11. Initialize git repository  `git init`
+ 12. Select this app in your Heroku-CLI `heroku git:remote -a appname`
+ 13. Commit the changes `git commit -am "Your commit message"`
+ 14. Push Code to Heroku `git push heroku master`
+ 15. Scale the dynos `heroku ps:scale worker=1`
