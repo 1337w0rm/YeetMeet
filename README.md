@@ -76,26 +76,26 @@ Open YeetMeet user directory, the folder path that appears on your CLI. It shoul
 9.  Minimise CLI and Download Chrome Driver for your particular version of Chrome from [here](https://sites.google.com/a/chromium.org/chromedriver/downloads) .
 10. Extract and paste the driver file on the YeetMeet user directory.
 11. run `python chromium.py` to start Bot server on Local Machine. Chrome Brower Should open automatically here.
-12. Now set Up meet.pkl and zoom.pkl files from your telegram bot. Send /zoom or /meet whatever you want to use to your bot on telegram.
-13. After that send /restart to bot. 
-14. If any error occurs , check config.py file or delete meet.pkl or/and zoom.pkl from your YeetMeet directory and try again.
-15. You can use your bot through your local machine by sending /meet https://meet.google.com/agr-ghts-ade or /zoom 12354674654 ax56rR to join meetings on your Local Machine. See Usage and commands above.
+12. Now set Up meet.pkl and zoom.pkl files from your telegram bot. Send /zoom or /meet whatever you want to use to your bot on telegram. After that send /restart to bot. 
+13. If any error occurs , check config.py file or delete meet.pkl or/and zoom.pkl from your YeetMeet directory and try again.
+14. You can use your bot through your local machine by sending /meet https://meet.google.com/agr-ghts-ade or /zoom 12354674654 ax56rR to join meetings on your Local Machine. See Usage and commands above.
     
 
 
 ## For using bot wirelessly without local machine and offline
 	
-16. First, Create and join a test zoom or meet meeting automatically  from local machine.
-17. meet.pkl or zoom.pkl should be present in YeetMeet directory.
-18. Make Sure Everything is working properly properly without errors , then only proceed next steps. For help, see above steps.
-19. Make Sure [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli) is installed on your Local Machine.
-20. [Create an heroku account](https://signup.heroku.com/) if you don't have one and set up the basics. Now run following commands on command line.
-21. Use `heroku login -i` to login to your Heroku account on command line.
-22. Create a Heroku App `heroku create appname --buildpack heroku/python` Replace appname with any unique namein this and folllowing steps.
-23. Set Chromedriver Builpack `heroku buildpacks:add https://github.com/heroku/heroku-buildpack-chromedriver -a appname`
-24. Set Google Chrome buildpack `heroku buildpacks:add https://github.com/1337w0rm/heroku-buildpack-google-chrome -a appname`
-25. Initialize git repository  `git init`
-26. Select this app in your Heroku-CLI `heroku git:remote -a appname`
+15. First, Create and join a test zoom or meet meeting automatically  from local machine.
+16. meet.pkl or zoom.pkl should be present in YeetMeet directory.
+17. Make Sure Everything is working properly properly without errors , then only proceed next steps. For help, see above steps.
+18. Make Sure [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli) is installed on your Local Machine.
+29. [Create an heroku account](https://signup.heroku.com/) if you don't have one and set up the basics. Now run following commands on command line.
+20. Use `heroku login -i` to login to your Heroku account on command line.
+21. Create a Heroku App `heroku create appname --buildpack heroku/python` Replace appname with any unique namein this and folllowing steps.
+22. Set Chromedriver Builpack `heroku buildpacks:add https://github.com/heroku/heroku-buildpack-chromedriver -a appname`
+23. Set Google Chrome buildpack `heroku buildpacks:add https://github.com/1337w0rm/heroku-buildpack-google-chrome -a appname`
+24. Initialize git repository  `git init`
+25. Select this app in your Heroku-CLI `heroku git:remote -a appname`
+26. Add all files to `git add .`
 27. Commit the changes `git commit -am "Commit message"`
 28. Push Code to Heroku `git push heroku master`
 29. Scale the dynos `heroku ps:scale worker=1`
