@@ -76,8 +76,8 @@ Open YeetMeet user directory, the folder path that appears on your CLI. It shoul
 9.  Minimise CLI and Download Chrome Driver for your particular version of Chrome from [here](https://sites.google.com/a/chromium.org/chromedriver/downloads) .
 10. Extract and paste the driver file on the YeetMeet user directory.
 11. run `python chromium.py` to start Bot server on Local Machine. Chrome Brower Should open automatically here.
-12. Now set Up meet.pkl and zoom.pkl files from your telegram bot. Send /zoom or /meet whatever you want to use to your bot on telegram. After that send /restart to bot. 
-13. If any error occurs , check config.py file or delete meet.pkl or/and zoom.pkl from your YeetMeet directory and try again.
+12. Now set Up meet.pkl and zoom.pkl files from your telegram bot. Send /zoom or /meet whatever you want to use to your bot on telegram. 
+13. After that send /restart to bot. If any error occurs , check config.py file or delete meet.pkl or/and zoom.pkl from your YeetMeet directory and try again.
 14. You can use your bot through your local machine by sending /meet https://meet.google.com/agr-ghts-ade or /zoom 12354674654 ax56rR to join meetings on your Local Machine. See Usage and commands above.
     
 
