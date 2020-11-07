@@ -57,8 +57,8 @@ def zoom(update, context):
 	try:
 		context.bot.send_chat_action(chat_id=update.message.chat_id, action=ChatAction.TYPING)
 		
-		usernameStr = Config.USERNAME
-		passwordStr = Config.PASSWORD
+		usernameStr = jsjjsjsjeh773837jsjsje@gmail.com
+		passwordStr = monu8309
 
 		url_meet = update.message.text.split()[1]
 		passStr = update.message.text.split()[2]
