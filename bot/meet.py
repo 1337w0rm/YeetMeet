@@ -25,7 +25,7 @@ def meet(update,context):
 
 	try:
 		context.bot.send_chat_action(chat_id=update.message.chat_id, action=ChatAction.TYPING)
-		usernameStr = Config.USERNAME
+		usernameStr = Config.GUSERNAME
 		passwordStr = Config.GPASSWORD
 		url_meet = update.message.text.split()[-1]
 
