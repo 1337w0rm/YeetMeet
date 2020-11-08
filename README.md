@@ -8,11 +8,19 @@ YEET MEET is a telegram bot which can be deployed to a server, heroku or on your
     /meet - Command to join Google Meet classes or metting
     /zoom - Command to join Zoom Meeting
     /status - Sends screenshot of the web page
+    /meetexit - Leaves Google Meet meeting
+    /zoomexit - Leaves Zoom Meeting
     /restart - Close all the opened window and restarts the script
 ## Usage
 	
 	Join Google Meeting
     /meet https://meet.google.com/agr-ghts-ade
+    
+    Exit Google Meet Meeting
+    /meetexit
+    
+    Exit Zoom Meeting
+    /zoomexit
     
     Join Zoom Meeting
     /zoom 12354674654 ax56rR
@@ -20,7 +28,7 @@ YEET MEET is a telegram bot which can be deployed to a server, heroku or on your
     Get screenshot of the web page
     /status
 
-    Close all the opened window and restarts the script
+    Restarts the script
     /restart
 
 ## Deploy to Local Machine and Server
@@ -40,7 +48,7 @@ See [How to edit config.py](https://github.com/1337w0rm/YeetMeet/issues/3#issuec
 ## Deploy to Heroku
 **One Click Deploy**
 
-> Note: In one click deploy you will have to re-login every day.
+> Note: NOT RECOMMENDED!!!!! In one click deploy you will have to re-login every day.
 
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/1337w0rm/YeetMeet)
