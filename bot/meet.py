@@ -25,7 +25,7 @@ def meet(update,context):
 
 	try:
 		context.bot.send_chat_action(chat_id=update.message.chat_id, action=ChatAction.TYPING)
-		usernameStr = Config.USERNAME
+		usernameStr = Config.GUSERNAME
 		passwordStr = Config.GPASSWORD
 		url_meet = update.message.text.split()[-1]
 
@@ -53,11 +53,6 @@ def meet(update,context):
 			signInButton.click()
 			time.sleep(7)
 
-
-			browser.get('https://meet.google.com')
-			time.sleep(7)
-
-
 			if(browser.find_elements_by_xpath('//*[@id="authzenNext"]/div/button/div[2]')):
 				context.bot.send_chat_action(chat_id=update.message.chat_id, action=ChatAction.TYPING)
 				context.bot.send_message(chat_id=update.message.chat_id, text="Need Verification. Please Verify")
@@ -70,11 +65,14 @@ def meet(update,context):
 				os.remove('ss.png')
 				time.sleep(20)
 
+			browser.get('https://meet.google.com')
+			time.sleep(7)	
+
 			pickle.dump( browser.get_cookies() , open("meet.pkl","wb"))
 			context.bot.send_message(chat_id=update.message.chat_id, text="Logged In!")
-		
+
 		browser.get(url_meet)
-		time.sleep(3)
+		time.sleep(3)	
 
 		browser.save_screenshot("ss.png")
 		context.bot.send_chat_action(chat_id=update.message.chat_id, action=ChatAction.UPLOAD_PHOTO)

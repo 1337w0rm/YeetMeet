@@ -5,7 +5,7 @@ from telegram import ChatAction
 from config import Config
 from os import execl
 from sys import executable
-from bot import updater, dp
+from bot import updater, dp, browser
 from bot.meet import meet
 from bot.zoom import zoom
 

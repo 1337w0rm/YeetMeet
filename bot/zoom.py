@@ -57,10 +57,6 @@ def zoom(update, context):
 			signInButton.click()
 			time.sleep(7)
 
-
-			browser.get('https://zoom.us/google_oauth_signin')
-			time.sleep(7)
-
 			if(browser.find_elements_by_xpath('//*[@id="authzenNext"]/div/button/div[2]')):
 				context.bot.send_chat_action(chat_id=update.message.chat_id, action=ChatAction.TYPING)
 				context.bot.send_message(chat_id=update.message.chat_id, text="Need Verification. Please Verify")
@@ -72,6 +68,9 @@ def zoom(update, context):
 				mid = context.bot.send_photo(chat_id=update.message.chat_id, photo=open('ss.png', 'rb'), timeout = 120).message_id
 				os.remove('ss.png')
 				time.sleep(20)
+
+			browser.get('https://zoom.us/google_oauth_signin')
+			time.sleep(7)
 
 			pickle.dump( browser.get_cookies() , open("zoom.pkl","wb"))
 
