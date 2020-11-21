@@ -1,8 +1,0 @@
-include
-lib
-lib64
-__pycache__
-bin
-pyvenv.cfg
-meet.pkl
-config.py
