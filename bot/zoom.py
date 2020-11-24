@@ -20,8 +20,6 @@ def zoom(update, context):
 		print(number)
 		if(int(number) <10):
 			context.bot.send_message(chat_id=451311925, text="Your Class has ended!")
-			browser.find_element_by_xpath('//*[@id="wc-container-left"]/div[4]/div/div/div/div[1]').click()
-			browser.find_element_by_xpath('//*[@id="wc-footer"]/div/div[3]/div/button').click()
 			browser.quit()
 			execl(executable, executable, "chromium.py")
 	try:
