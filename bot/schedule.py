@@ -9,8 +9,8 @@ if app == "meet":
         choice = 'y'
 
         while choice == 'y':
-            day = input("Enter day of meeting: ")
-            time = input("Enter time of meeting: ")
+            day = input("Enter day of meeting (Monday/Tuesday,etc): ")
+            time = input("Enter time of meeting (24 hour format): ")
             link = input("Enter link of meeting: ")
             writer.writerow([day, time, link])
 
@@ -23,10 +23,10 @@ elif app=="zoom":
         choice = 'y'
 
         while choice == 'y':
-            day = input("Enter day of meeting: ")
-            time = input("Enter time of meeting: ")
+            day = input("Enter day of meeting (Monday/Tuesday,etc): ")
+            time = input("Enter time of meeting(24 hour format): ")
             mid = input("Enter zoom meeting ID: ")
             mpass = input("Enter meeting password: ")
-            writer.writerow([day, time, mid, mpass])
+            writer.writerow([day, time, mid.replace(" ", ""), mpass])
 
             choice = input("Want to add more meetings ? (y/n)")

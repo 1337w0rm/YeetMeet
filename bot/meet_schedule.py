@@ -29,14 +29,17 @@ class Meeting():
         self.link = link
 
 def getTodayMeetings():
-    with open('bot/meet.csv') as file:
-        read = csv.reader(file, delimiter=',')
-        meet_count = 0
-        for row in read:
-            meet_count += 1
-            if row[0] == datetime.datetime.today().strftime('%A'):
-                meeting = Meeting(row[0], row[1], row[2])
-                meeting_list.append(meeting)
+    try:
+        with open('bot/meet.csv') as file:
+            read = csv.reader(file, delimiter=',')
+            meet_count = 0
+            for row in read:
+                meet_count += 1
+                if row[0] == datetime.datetime.today().strftime('%A'):
+                    meeting = Meeting(row[0], row[1], row[2])
+                    meeting_list.append(meeting)
+    except:
+        print("Google meet schedule not found. Run schedule.py to add schedule.")
 
 def meet(context):
     logging.info("DOING")
@@ -153,14 +156,12 @@ def meet(context):
     #     print("NICE")
 
 def mJobQueue():
-    logging.info("Adding to schedule")
+    logging.info("Adding Google Meet meetings to schedule")
     getTodayMeetings()
 
     j = updater.job_queue
     
     for row in meeting_list:
-        # print(datetime.datetime.now())
-        # print(row.time)
         secs = (row.time - datetime.datetime.now()).total_seconds()
         if(secs > 0):
             print(secs)

@@ -9,6 +9,7 @@ import time
 from os import execl
 from sys import executable
 
+userId = Config.USERID
 
 @run_async	
 def zoom(update, context):
@@ -19,11 +20,11 @@ def zoom(update, context):
 		number = browser.find_element_by_xpath('//*[@id="wc-footer"]/div/div[2]/button[1]/div/div/span').text
 		print(number)
 		if(int(number) <10):
-			context.bot.send_message(chat_id=451311925, text="Your Class has ended!")
+			context.bot.send_message(chat_id=userId, text="Your Class has ended!")
 			browser.quit()
 			execl(executable, executable, "chromium.py")
 	try:
-		context.bot.send_chat_action(chat_id=update.message.chat_id, action=ChatAction.TYPING)
+		context.bot.send_chat_action(chat_id=userId, action=ChatAction.TYPING)
 		
 		usernameStr = Config.GUSERNAME
 		passwordStr = Config.GPASSWORD
@@ -45,8 +46,8 @@ def zoom(update, context):
 			time.sleep(7)
 
 			browser.save_screenshot("ss.png")
-			context.bot.send_chat_action(chat_id=update.message.chat_id, action=ChatAction.UPLOAD_PHOTO)
-			mid = context.bot.send_photo(chat_id=update.message.chat_id, photo=open('ss.png', 'rb'), timeout = 120).message_id
+			context.bot.send_chat_action(chat_id=userId, action=ChatAction.UPLOAD_PHOTO)
+			mid = context.bot.send_photo(chat_id=userId, photo=open('ss.png', 'rb'), timeout = 120).message_id
 			os.remove('ss.png')
 
 			password = browser.find_element_by_xpath("//input[@class='whsOnd zHQkBf']")
@@ -56,14 +57,14 @@ def zoom(update, context):
 			time.sleep(7)
 
 			if(browser.find_elements_by_xpath('//*[@id="authzenNext"]/div/button/div[2]')):
-				context.bot.send_chat_action(chat_id=update.message.chat_id, action=ChatAction.TYPING)
-				context.bot.send_message(chat_id=update.message.chat_id, text="Need Verification. Please Verify")
+				context.bot.send_chat_action(chat_id=userId, action=ChatAction.TYPING)
+				context.bot.send_message(chat_id=userId, text="Need Verification. Please Verify")
 				browser.find_element_by_xpath('//*[@id="authzenNext"]/div/button/div[2]').click()
 				time.sleep(5)
 
 				browser.save_screenshot("ss.png")
-				context.bot.send_chat_action(chat_id=update.message.chat_id, action=ChatAction.UPLOAD_PHOTO)
-				mid = context.bot.send_photo(chat_id=update.message.chat_id, photo=open('ss.png', 'rb'), timeout = 120).message_id
+				context.bot.send_chat_action(chat_id=userId, action=ChatAction.UPLOAD_PHOTO)
+				mid = context.bot.send_photo(chat_id=userId, photo=open('ss.png', 'rb'), timeout = 120).message_id
 				os.remove('ss.png')
 				time.sleep(20)
 
@@ -72,14 +73,14 @@ def zoom(update, context):
 
 			pickle.dump( browser.get_cookies() , open("zoom.pkl","wb"))
 
-			context.bot.send_message(chat_id=update.message.chat_id, text="Logged In!")
+			context.bot.send_message(chat_id=userId, text="Logged In!")
 
 		browser.get('https://zoom.us/wc/join/'+ url_meet)
 
 		time.sleep(5)
 		browser.save_screenshot("ss.png")
-		context.bot.send_chat_action(chat_id=update.message.chat_id, action=ChatAction.UPLOAD_PHOTO)
-		mid  = context.bot.send_photo(chat_id=update.message.chat_id, photo=open('ss.png', 'rb'), caption="Test", timeout = 120).message_id
+		context.bot.send_chat_action(chat_id=userId, action=ChatAction.UPLOAD_PHOTO)
+		mid  = context.bot.send_photo(chat_id=userId, photo=open('ss.png', 'rb'), caption="Test", timeout = 120).message_id
 		os.remove('ss.png')
 
 		browser.find_element_by_xpath('//*[@id="joinBtn"]').click()
@@ -89,11 +90,11 @@ def zoom(update, context):
 
 		time.sleep(10)
 
-		context.bot.delete_message(chat_id=update.message.chat_id ,message_id = mid)
+		context.bot.delete_message(chat_id=userId ,message_id = mid)
 
 		browser.save_screenshot("ss.png")
-		context.bot.send_chat_action(chat_id=update.message.chat_id, action=ChatAction.UPLOAD_PHOTO)
-		mid = context.bot.send_photo(chat_id=update.message.chat_id, photo=open('ss.png', 'rb'), timeout = 120).message_id
+		context.bot.send_chat_action(chat_id=userId, action=ChatAction.UPLOAD_PHOTO)
+		mid = context.bot.send_photo(chat_id=userId, photo=open('ss.png', 'rb'), timeout = 120).message_id
 		os.remove('ss.png')
 
 		time.sleep(5)
@@ -106,15 +107,15 @@ def zoom(update, context):
 		# browser.find_element_by_xpath('//*[@id="participant-window"]/div[2]/div/div/div[2]/div/button[2]').click()
 		browser.find_element_by_xpath('//*[@id="wc-container-right"]/div/div[2]/div/button[2]').click()
 
-		context.bot.send_chat_action(chat_id=update.message.chat_id, action=ChatAction.TYPING)
-		context.bot.send_message(chat_id=update.message.chat_id, text="Attending you lecture. You can chill :v")
+		context.bot.send_chat_action(chat_id=userId, action=ChatAction.TYPING)
+		context.bot.send_message(chat_id=userId, text="Attending you lecture. You can chill :v")
 		logging.info("STAAAAPH!!")
 
 	
 	except Exception as e:
 		browser.quit()
-		context.bot.send_message(chat_id=update.message.chat_id, text="Error occurred! Fix error and retry!")
-		context.bot.send_message(chat_id=update.message.chat_id, text=str(e))
+		context.bot.send_message(chat_id=userId, text="Error occurred! Fix error and retry!")
+		context.bot.send_message(chat_id=userId, text=str(e))
 		execl(executable, executable, "chromium.py")
 
 	j = updater.job_queue
