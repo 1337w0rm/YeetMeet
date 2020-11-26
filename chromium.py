@@ -8,13 +8,15 @@ from os import execl
 from sys import executable
 from bot import updater, dp, browser
 
+from bot.meet_login import mlogin
+from bot.zoom_login import zlogin
+
 from bot.meet import meet
 from bot.zoom import zoom
 
 if Config.SCHEDULE == True:
-    from bot.meet_schedule import mJobQueue
+    from bot.meet_schedule import mJobQueue, timeTable
     from bot.zoom_schedule import zJobQueue
-
 userId = Config.USERID
 
 @run_async
@@ -30,8 +32,7 @@ def status(update, context):
     context.bot.send_photo(chat_id=userId, photo=open('ss.png', 'rb'), timeout = 120)
     os.remove('ss.png')
 
-def main():
-    
+def main():    
     j = updater.job_queue
 
     dp.add_handler(CommandHandler("zoom", zoom))
@@ -40,9 +41,13 @@ def main():
     if Config.SCHEDULE == True:
         mJobQueue()
         zJobQueue()
+        dp.add_handler(CommandHandler("timetable", timeTable))
 
     dp.add_handler(CommandHandler("exit", exit))
     dp.add_handler(CommandHandler("status", status))
+    
+    dp.add_handler(CommandHandler("mlogin", mlogin))
+    dp.add_handler(CommandHandler("zlogin", zlogin))
 
     logging.info("Bot started")
 
