@@ -41,7 +41,7 @@ def joinZoom(context, url_meet, passStr):
         time.sleep(5)
         browser.save_screenshot("ss.png")
         context.bot.send_chat_action(chat_id=userId, action=ChatAction.UPLOAD_PHOTO)
-        mid  = context.bot.send_photo(chat_id=userId, photo=open('ss.png', 'rb'), caption="Test", timeout = 120).message_id
+        mid  = context.bot.send_photo(chat_id=userId, photo=open('ss.png', 'rb'), timeout = 120).message_id
         os.remove('ss.png')
 
         browser.find_element_by_xpath('//*[@id="joinBtn"]').click()
@@ -65,7 +65,6 @@ def joinZoom(context, url_meet, passStr):
         WebDriverWait(browser, 1000).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="voip-tab"]/div/button'))).click()
 
         WebDriverWait(browser, 1000).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="wc-footer"]/div/div[2]/button[1]'))).click()
-
 
         WebDriverWait(browser, 1000).until(EC.element_to_be_clickable((By.XPATH,'//*[@id="wc-container-right"]/div/div[2]/div/button[2]'))).click()
 
