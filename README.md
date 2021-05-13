@@ -1,4 +1,4 @@
-# YEET MEET
+# YEET MEET (Telegram Group: https://t.me/YeetMeetTG)
 
 YEET MEET is a telegram bot which can be deployed to a server, heroku or on your local machine. It can attend your Google Meet and Zoom classes for you. You can also schedule meetings and it will automatically join at the given time.
 
