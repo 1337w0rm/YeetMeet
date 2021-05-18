@@ -1,4 +1,4 @@
-# [NOT WORKING] Google Detects Automated log In which prevents the bot from working. If anybody have a solution do a Pull Request or text me on Telegram.
+# [NOTE] If you get Couldn't Sign In or App not Secure error while logging in. Create and use a fresh google account.
 
 
 # YEET MEET (Telegram Group: https://t.me/YeetMeetTG)
