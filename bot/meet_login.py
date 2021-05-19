@@ -52,7 +52,7 @@ def mlogin(update, context):
             os.remove('ss.png')
             time.sleep(20)
 
-        browser.get('https://meet.google.com')
+        browser.get('https://apps.google.com/meet/')
         time.sleep(7)   
 
         pickle.dump( browser.get_cookies() , open("meet.pkl","wb"))
