@@ -106,4 +106,4 @@ See [How to edit config.py](https://github.com/1337w0rm/YeetMeet/issues/3#issuec
  16. Commit the changes `git commit -am "Your commit message"`
  17. Push Code to Heroku `git push heroku master`
  18. Scale the dynos `heroku ps:scale worker=1`
-
+🙄🤣😌
