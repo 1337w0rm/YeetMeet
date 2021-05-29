@@ -92,7 +92,7 @@ See [How to edit config.py](https://github.com/1337w0rm/YeetMeet/issues/3#issuec
  3. `cd YeetMeet`
  4. `pip install -r requirements.txt`
  5. `python chromium.py`
- 6. Login to your Google Account using `/mlogin`  for meet and `/zlogin` for Zoom.
+ 6. Login to your Google Account using `/mlogin`  for meet and `/zlogin` for Zoom. Wait till you get `Logged In` message from your bot.
  7. Now through Heroku-CLI login to your Heroku account. 
  `heroku login -i`
  8. Create a Heroku App `heroku create appname --buildpack heroku/python`
