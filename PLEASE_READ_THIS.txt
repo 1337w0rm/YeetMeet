@@ -8,7 +8,8 @@ Give it a name that you can remember
 
 Click "Launch the profile in new window"
 
-Change preferences and settings of that profile according to how i will tell,
+Change preferences and settings of that profile according to video i sent in telegram
+( You can skip the theme changing stuff i did in the video, except that do everything else i did in the video )
 
 Then, close both the browser windows entirely,
 
