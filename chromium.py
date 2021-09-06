@@ -1,15 +1,17 @@
 import logging
 import os
+import pickle
 from telegram.ext import CommandHandler, Job, run_async
 from telegram import ChatAction
 from config import Config
-
+from selenium.webdriver.common.by import By
+from selenium import webdriver
+from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from os import execl
 from sys import executable
 from bot import updater, dp, browser
-
-from bot.meet_login import mlogin
-from bot.zoom_login import zlogin
 
 from bot.meet import meet
 from bot.zoom import zoom
@@ -19,10 +21,9 @@ if Config.SCHEDULE == True:
     from bot.zoom_schedule import zJobQueue
 
 userId = Config.USERID
-
 @run_async
 def exit(update, context):
-    context.bot.send_message(chat_id=userId, text="Restarting, Please wait!")
+    context.bot.send_message(chat_id=userId, text="Restarting bot, Please wait!")
     browser.quit()
     execl(executable, executable, "chromium.py")
 
@@ -33,12 +34,20 @@ def status(update, context):
     context.bot.send_photo(chat_id=userId, photo=open('ss.png', 'rb'), timeout = 120)
     os.remove('ss.png')
 
-def main():    
+@run_async
+def help(update, context):
+    context.bot.send_message(chat_id=userId, text="""/meet <link> -   Bunk a Google Meet meeting
+/zoom <userID> <password>   - Bunk a zoom meeting
+/exit -   Exit the meeting and restart
+/status -   Send screenshot
+/help -   Send this help message""")
+
+def main():
     j = updater.job_queue
 
     dp.add_handler(CommandHandler("zoom", zoom))
     dp.add_handler(CommandHandler("meet", meet))
-   
+
     if Config.SCHEDULE == True:
         mJobQueue()
         zJobQueue()
@@ -46,10 +55,7 @@ def main():
 
     dp.add_handler(CommandHandler("exit", exit))
     dp.add_handler(CommandHandler("status", status))
-    
-    dp.add_handler(CommandHandler("mlogin", mlogin))
-    dp.add_handler(CommandHandler("zlogin", zlogin))
-
+    dp.add_handler(CommandHandler("help", help))
     logging.info("Bot started")
 
     updater.start_polling()

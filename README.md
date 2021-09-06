@@ -1,7 +1,4 @@
-# [NOTE] If you get Couldn't Sign In or App not Secure error while logging in. Create and use a fresh google account.
-
-
-# YEET MEET (Telegram Group: https://t.me/YeetMeetTG)
+# YEET MEET
 
 YEET MEET is a telegram bot which can be deployed to a server, heroku or on your local machine. It can attend your Google Meet and Zoom classes for you. You can also schedule meetings and it will automatically join at the given time.
 
@@ -92,7 +89,7 @@ See [How to edit config.py](https://github.com/1337w0rm/YeetMeet/issues/3#issuec
  3. `cd YeetMeet`
  4. `pip install -r requirements.txt`
  5. `python chromium.py`
- 6. Login to your Google Account using `/mlogin`  for meet and `/zlogin` for Zoom. Wait till you get `Logged In` message from your bot.
+ 6. Login to your Google Account using `/mlogin`  for meet and `/zlogin` for Zoom.
  7. Now through Heroku-CLI login to your Heroku account. 
  `heroku login -i`
  8. Create a Heroku App `heroku create appname --buildpack heroku/python`

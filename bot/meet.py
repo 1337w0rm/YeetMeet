@@ -11,15 +11,14 @@ import pickle
 import time
 from os import execl
 from sys import executable
-
+from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.common.keys import Keys 
 userId = Config.USERID
-
-
 def joinMeet(context, url_meet):
 
     def students(context):
         try:
-            number = WebDriverWait(browser, 2400).until(EC.presence_of_element_located((By.XPATH, '//*[@id="ow3"]/div[1]/div/div[9]/div[3]/div[10]/div[3]/div[2]/div/div/div[2]/div/div'))).text
+            number = WebDriverWait(browser, 2400).until(EC.presence_of_element_located((By.XPATH, '//*[@id="ow3"]/div[1]/div/div[8]/div[3]/div[6]/div[3]/div/div[2]/div[1]/span/span/div/div/span[2]'))).text
         except:
             return
         print(number)
@@ -29,19 +28,8 @@ def joinMeet(context, url_meet):
             execl(executable, executable, "chromium.py")
 
     try:
-        if os.path.exists("meet.pkl"):
-            cookies = pickle.load(open("meet.pkl", "rb"))
-            browser.get('https://apps.google.com/meet/')
-            for cookie in cookies:
-                browser.add_cookie(cookie)
-
-        else:
-            context.bot.send_message(chat_id=userId, text="You're not logged in please run /mlogin command to login. Then try again!")
-            return
-
         browser.get(url_meet)
         time.sleep(3)   
-
         browser.save_screenshot("ss.png")
         context.bot.send_chat_action(chat_id=userId, action=ChatAction.UPLOAD_PHOTO)
         mid  = context.bot.send_photo(chat_id=userId, photo=open('ss.png', 'rb'), timeout = 120).message_id
@@ -71,10 +59,11 @@ def joinMeet(context, url_meet):
         mid = context.bot.send_photo(chat_id=userId, photo=open('ss.png', 'rb'), timeout = 120).message_id
         os.remove('ss.png')
         time.sleep(5)
-
+        a = ActionChains(browser)
+        a.key_down(Keys.CONTROL).send_keys('D').key_up(Keys.CONTROL).perform()
+        a.key_down(Keys.CONTROL).send_keys('E').key_up(Keys.CONTROL).perform()
         context.bot.delete_message(chat_id=userId ,message_id = mid)
-        time.sleep(10)
-
+        time.sleep(7)
         browser.save_screenshot("ss.png")
         context.bot.send_chat_action(chat_id=userId, action=ChatAction.UPLOAD_PHOTO)
         mid = context.bot.send_photo(chat_id=userId, photo=open('ss.png', 'rb'), timeout = 120).message_id
@@ -84,10 +73,8 @@ def joinMeet(context, url_meet):
         context.bot.send_message(chat_id=userId, text="Attending your lecture. You can chill :v")
         logging.info("STAAAAPH!!")
     except Exception as e:
-        browser.quit()
         context.bot.send_message(chat_id=userId, text="Error occurred! Fix error and retry!")
         context.bot.send_message(chat_id=userId, text=str(e))
-        execl(executable, executable, "chromium.py")
 
     j = updater.job_queue
     j.run_repeating(students, 20, 1000)
