@@ -6,6 +6,7 @@ YEET MEET is a telegram bot which can be deployed to a server, heroku or on your
 
 ## Bot Commands
 
+    /help - Show avaliable commands
     /meet - Command to join Google Meet classes or metting
     /zoom - Command to join Zoom Meeting
     /status - Sends screenshot of the web page
