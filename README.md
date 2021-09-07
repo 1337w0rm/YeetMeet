@@ -50,7 +50,24 @@ The scheduler.py script will guide you to setup schedule for your meetings. It s
 
 
 ## Deploy to Linux Machine and Linux Server
-(  I will add support for running it in local machine, please wait for some days )
+
+You would need:
+
+1. Geckodriver and Firefox installed on your system.
+2. Python 3.7+ and pip3 installed.
+
+To run it locally:
+
+1. `git clone https;//github.com/vanshsantoshi/YeetMeet.git`
+2. `cd YeetMeet`
+3. `python3 -m pip install -r requirements.txt`
+4. Rename `YeetMeet/config.py` to something else.
+5. Rename `YeetMeet/RunLocallyConfig.py` to `config.py` .
+6. Rename `YeetMeet/bot/__init__.py` to something else.
+7. Rename `YeetMeet/bot/RunlocallyInit.py` to `__init__.py` .
+8. Set your `USERID`, `BOT_TOKEN` and `SCHEDULE` value in `config.py` .
+9. ( You can get your `USERID` from @userinfobot from Telegram, and `BOT_TOKEN` from @BotFather from Telegram. )
+10. `python3 chromium.py`
 
 ## Deploy to Heroku
 
