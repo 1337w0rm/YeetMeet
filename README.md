@@ -78,3 +78,26 @@ You would need :
 3. Git installed.
 4. Some patience.
 5. For remaining instructions, please read [this](https://github.com/vanshsantoshi/YeetMeet/blob/master/PLEASE_READ_THIS.txt). or, watch video tutorials we posted on the telegram group.
+
+
+## Managing Heroku's Dynos so that your bot won't stop at near the end of the month 
+
+Heroku gives 500 hours/month for free 
+
+And, a month has 720 hours 
+
+So, your app would probably stop working earlier than the end of the month 
+
+To prevent that, you can 
+
+`heroku ps:scale worker=0`
+
+When you're not using it, that command will stop the app
+
+And again, when you want to start it , 
+
+`heroku ps:scale worker=1`
+
+Stopping app when you are not using it, will save hours/month (heroku calls it dynos) for you, so you won't have to redeploy, or will have to wake up early for classes when the end of month is near :)
+
+Also, you can do this ( turning app off or on ) right from your phone on Termux ( Turning on PC just for this might be pain in ass for some people ), so, if you don't know much regarding this, and you want a tutorial, you can ask us out on telegram group.
