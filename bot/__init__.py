@@ -33,7 +33,7 @@ try:
 	#options.add_argument("--window-size=1200,800")
 	options.add_argument("--disable-blink-features=AutomationControlled")
 	#browser = webdriver.Firefox(options=options, firefox_profile=profile, desired_capabilities=desired, service_args=["--marionette-port", "2828"])
-	browser = webdriver.Firefox(options=options, firefox_binary=binary, executable_path='/app/bot/geckodriver', desired_capabilities=desired, service_args=["--marionette-port", "2828"])
+	browser = webdriver.Firefox(options=options, executable_path='/app/vendor/geckodriver', firefox_binary=binary, desired_capabilities=desired, service_args=["--marionette-port", "2828"])
 	#browser.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
 except Exception as e:
 	print(e)
