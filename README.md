@@ -1,5 +1,7 @@
 # YEET MEET
 
+# Telegram Group: https://t.me/YeetMeetTG
+
 YEET MEET is a telegram bot which can be deployed to a server, heroku or on your local machine. It can attend your Google Meet and Zoom classes for you. You can also schedule meetings and it will automatically join at the given time.
 
 ## Bot Commands
@@ -58,4 +60,4 @@ You would need :
 2. [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli#download-and-install) and [Heroku Account](https://www.heroku.com). 
 3. Git installed.
 4. Some patience.
-5. For remaining instructions, please read [this](https://github.com/vanshsantoshi/YeetMeet/blob/master/PLEASE_READ_THIS.txt). or, watch the videos.
+5. For remaining instructions, please read [this](https://github.com/vanshsantoshi/YeetMeet/blob/master/PLEASE_READ_THIS.txt). or, watch video tutorials we posted on the telegram group.
