@@ -33,9 +33,9 @@ YEET MEET is a telegram bot which can be deployed to a server, heroku or on your
 
 **BOT_TOKEN** : You can get the BOT TOKEN from Bot Father on Telegram. [Here is a guide on how to create and new bot and get it's BOT_TOKEN](https://www.siteguarding.com/en/how-to-get-telegram-bot-api-token)
 
-**SCHEDULER** :  If you want to use scheduler on bot set this to `TRUE` else set it to `False
+**SCHEDULER** :  If you want to use scheduler on bot set this to `TRUE` else set it to `False`
 
-**USERID**` : Set this to your Telegram User ID. ( You can use @userinfobot on Telegram for that)
+**USERID** : Set this to your Telegram User ID. ( You can use @userinfobot on Telegram for that )
 
 ## Setup Scheduler
 > If you want to use Scheduler set SCHEDULER to True in [config.py](https://github.com/1337w0rm/YeetMeet/blob/schedule/config.py)
@@ -52,4 +52,10 @@ The scheduler.py script will guide you to setup schedule for your meetings. It s
 
 ## Deploy to Heroku
 
- ( See PLEASE_READ_THIS.txt on this repo )
+
+You would need :
+1. Firefox, for making a profile your YeetMeet app will use.
+2. [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli#download-and-install) and [Heroku Account](heroku.com). 
+3. Git installed.
+4. Some patience.
+5. For remaining instructions, please read [this](https://github.com/vanshsantoshi/YeetMeet/blob/master/PLEASE_READ_THIS.txt). or, watch the videos.
