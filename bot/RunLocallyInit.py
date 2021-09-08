@@ -23,7 +23,7 @@ try:
 	#profile.update_preferences()
 	desired = DesiredCapabilities.FIREFOX
 	options.add_argument("--disable-infobars")
-	#options.add_argument("--headless")
+	options.add_argument("--headless")
 	#options.add_argument("--window-size=1200,800")
 	options.add_argument("--disable-blink-features=AutomationControlled")
 	#browser = webdriver.Firefox(options=options, firefox_profile=profile, desired_capabilities=desired, service_args=["--marionette-port", "2828"])

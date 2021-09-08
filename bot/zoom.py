@@ -6,6 +6,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
+from selenium.common.exceptions import NoSuchElementException
 from bot import updater, browser
 from telegram.ext import run_async
 from telegram import ChatAction
@@ -24,26 +25,44 @@ def joinZoom(context, url_meet, passStr):
 
         browser.find_element_by_xpath('//*[@id="wc-container-left"]/div[4]/div/div/div/div[1]').click()
         number = WebDriverWait(browser, 2400).until(EC.presence_of_element_located((By.XPATH, '//*[@id="wc-footer"]/div/div[2]/button[1]/div/div/span'))).text
-
         print(number)
         if(int(number) <10):
             context.bot.send_message(chat_id=userId, text="Your Class has ended!")
             browser.quit()
             execl(executable, executable, "chromium.py")
     try:
+        name = "Vansh Santoshi"
         browser.get('https://zoom.us')
-        time.sleep(3)
         browser.get('https://zoom.us/wc/join/'+ url_meet)
-        district = WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.CSS_SELECTOR, "#inputname")))
-        browser.find_element(By.CSS_SELECTOR, "#inputname").click()
+        WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.CSS_SELECTOR, "#inputname"))).click()
         for i in range(0, 20):
             browser.find_element(By.CSS_SELECTOR, "#inputname").send_keys(Keys.BACK_SPACE)
-        browser.find_element(By.CSS_SELECTOR, "#inputname").send_keys("Vansh Santoshi")
-        time.sleep(3)
+        browser.find_element(By.CSS_SELECTOR, "#inputname").send_keys(name)
         WebDriverWait(browser, 20).until(EC.presence_of_element_located((By.CSS_SELECTOR, "#joinBtn"))).click()
         print("Clicked on join button")
+
         try:
-             for button in WebDriverWait(browser, 30).until(EC.visibility_of_all_elements_located((By.XPATH, "//button[contains(., 'Continue')]"))):
+            logout = WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.LINK_TEXT, "SIGN IN")))
+            print("User is logged out. Logging in them again")
+            browser.get("https://zoom.us/google_oauth_signin")
+            WebDriverWait(browser, 20).until(EC.presence_of_element_located((By.CSS_SELECTOR, ".wLBAL"))).click()
+            time.sleep(10)
+            browser.get('https://zoom.us')
+            browser.get('https://zoom.us/wc/join/'+ url_meet)
+            WebDriverWait(browser, 10).until(EC.visibility_of_element_located((By.CSS_SELECTOR, "#inputname"))).click()
+            for i in range(0, 20):
+                browser.find_element(By.CSS_SELECTOR, "#inputname").send_keys(Keys.BACK_SPACE)
+            browser.find_element(By.CSS_SELECTOR, "#inputname").send_keys(name)
+            WebDriverWait(browser, 20).until(EC.presence_of_element_located((By.CSS_SELECTOR, "#joinBtn"))).click()
+            print("Clicked on join button after logging in")
+
+        except NoSuchElementException:
+            print("User is already logged in. Continuing")
+        except Exception as e:
+            print(e)
+            print("Probably, Terms and policies agreement isnt asked for.")
+        try:
+            for button in WebDriverWait(browser, 20).until(EC.visibility_of_all_elements_located((By.XPATH, "//button[contains(., 'Continue')]"))):
                  button.click()
                  print("Trying to click the continue button")
         except Exception as e:
@@ -62,7 +81,9 @@ def joinZoom(context, url_meet, passStr):
         context.bot.send_chat_action(chat_id=userId, action=ChatAction.UPLOAD_PHOTO)
         mid  = context.bot.send_photo(chat_id=userId, photo=open('ss.png', 'rb'), timeout = 120).message_id
         os.remove('ss.png')
-
+        context.bot.send_chat_action(chat_id=userId, action=ChatAction.TYPING)
+        context.bot.send_message(chat_id=userId, text="Attending you lecture. You can chill :v")
+        logging.info("STAAAAPH!!")
 #Join Audio Part
         try:
              action = webdriver.ActionChains(browser)
@@ -74,11 +95,11 @@ def joinZoom(context, url_meet, passStr):
              print(e)
              print("Maybe the dialog got closed by itself, or the website layout has changed ?")
 #########
-        context.bot.delete_message(chat_id=userId ,message_id = mid)
-        browser.save_screenshot("ss.png")
-        context.bot.send_chat_action(chat_id=userId, action=ChatAction.UPLOAD_PHOTO)
-        mid = context.bot.send_photo(chat_id=userId, photo=open('ss.png', 'rb'), timeout = 120).message_id
-        os.remove('ss.png')
+#        context.bot.delete_message(chat_id=userId ,message_id = mid)
+#        browser.save_screenshot("ss.png")
+#        context.bot.send_chat_action(chat_id=userId, action=ChatAction.UPLOAD_PHOTO)
+#        mid = context.bot.send_photo(chat_id=userId, photo=open('ss.png', 'rb'), timeout = 120).message_id
+#        os.remove('ss.png')
 
         WebDriverWait(browser, 1000).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="voip-tab"]/div/button'))).click()
 
@@ -86,9 +107,6 @@ def joinZoom(context, url_meet, passStr):
 
         WebDriverWait(browser, 1000).until(EC.element_to_be_clickable((By.XPATH,'//*[@id="wc-container-right"]/div/div[2]/div/button[2]'))).click()
 
-        context.bot.send_chat_action(chat_id=userId, action=ChatAction.TYPING)
-        context.bot.send_message(chat_id=userId, text="Attending you lecture. You can chill :v")
-        logging.info("STAAAAPH!!")
 
     except Exception as e:
         browser.save_screenshot("ss.png")
