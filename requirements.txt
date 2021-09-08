@@ -1,5 +1,2 @@
-pause==0.2
-python_telegram_bot==12.5.1
 selenium==3.141.0
-psutil==5.7.2
-pylivestream==1.11.1
+python_telegram_bot==12.5.1

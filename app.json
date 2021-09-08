@@ -2,7 +2,7 @@
 	"name": "Google Meet Telegram Bot",
   	"description": "Skip Online Lectures like a pro",
   	"repository": "https://github.com/1337w0rm/YeetMeet",
-  	"keywords": ["selenium", "chromedriver", "python"],
+  	"keywords": ["selenium", "geckodriver", "python"],
   	"env": {
     "BOT_TOKEN": {
     	"description": "Telegram Bot Token"
@@ -20,18 +20,8 @@
 
   	"buildpacks": [
       {
-         "url": "heroku/python"
-      },
-
-
-      {
-      	"url": "https://github.com/heroku/heroku-buildpack-chromedriver"
-      },
-
-      {
-        "url": "https://github.com/1337w0rm/heroku-buildpack-google-chrome"
       }
   ],
 
-  "stack": "heroku-18"
+  "stack": "heroku-20"
 }

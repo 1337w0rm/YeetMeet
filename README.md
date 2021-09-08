@@ -1,14 +1,12 @@
-# [NOTE] If you get Couldn't Sign In or App not Secure error while logging in. Create and use a fresh google account.
+# YEET MEET
 
-
-# YEET MEET (Telegram Group: https://t.me/YeetMeetTG)
+# Telegram Group: https://t.me/YeetMeetTG
 
 YEET MEET is a telegram bot which can be deployed to a server, heroku or on your local machine. It can attend your Google Meet and Zoom classes for you. You can also schedule meetings and it will automatically join at the given time.
 
 ## Bot Commands
 
-    /mlogin - Login to Meet
-    /zlogin - Login to Zoom
+    /help - Show avaliable commands
     /meet - Command to join Google Meet classes or metting
     /zoom - Command to join Zoom Meeting
     /status - Sends screenshot of the web page
@@ -19,6 +17,9 @@ YEET MEET is a telegram bot which can be deployed to a server, heroku or on your
 	
 	Join Google Meeting
     /meet https://meet.google.com/agr-ghts-ade
+    
+    Get list of commands
+    /help
     
     Join Zoom Meeting
     /zoom 12354674654 ax56rR
@@ -33,77 +34,71 @@ YEET MEET is a telegram bot which can be deployed to a server, heroku or on your
 
 	Use /timetable to get todays schedule
 
-
-
-## [config.py](https://github.com/1337w0rm/YeetMeet/blob/schedule/config.py) Explained
-
 **BOT_TOKEN** : You can get the BOT TOKEN from Bot Father on Telegram. [Here is a guide on how to create and new bot and get it's BOT_TOKEN](https://www.siteguarding.com/en/how-to-get-telegram-bot-api-token)
 
-**GUSERNAME**  : Your Email/Google username. 
-				Example: `aditya@gmail.com/aditya`
+**SCHEDULER** :  If you want to use scheduler on bot set this to `TRUE` else set it to `False`
 
-**GPASSWORD** : Your Gmail/Google password
-
-**SCHEDULER** :  If you want to use scheduler on bot set this to `TRUE` else set it to `False
-
-**USERID**` : Set this to your Telegram User ID. [Guide to get your Telegram User ID](https://www.wikihow.com/Know-Chat-ID-on-Telegram-on-Android#Finding-Your-Personal-Chat-ID) 
+**USERID** : Set this to your Telegram User ID. ( You can use @userinfobot on Telegram for that )
 
 ## Setup Scheduler
 > If you want to use Scheduler set SCHEDULER to True in [config.py](https://github.com/1337w0rm/YeetMeet/blob/schedule/config.py)
 
 1. cd YeetMeet
 2. cd bot
-3. python [schedule.py](https://github.com/1337w0rm/YeetMeet/blob/schedule/bot/schedule.py)
+3. python3 [schedule.py](https://github.com/1337w0rm/YeetMeet/blob/schedule/bot/schedule.py)
 
 The scheduler.py script will guide you to setup schedule for your meetings. It stores the schedule in a CSV file. 
 
 
 ## Deploy to Linux Machine and Linux Server
 
-> Set ENVIRONMENT VARIABLES according to VARIABLES in [config.py](https://github.com/1337w0rm/YeetMeet/blob/master/config.py)
- OR
-See [How to edit config.py](https://github.com/1337w0rm/YeetMeet/issues/3#issuecomment-694277739)
-	
- 1. Download and Install Google Chrome and Chromedriver.
- 2. `git clone https://github.com/1337w0rm/YeetMeet`
- 3. `cd YeetMeet`
- 4. `pip install -r requirements.txt`
- 5. `python chromium.py` 
+You would need:
+
+1. Geckodriver and Firefox installed on your system.
+2. Python 3.7+ and pip3 installed.
+
+To run it locally:
+
+1. `git clone https;//github.com/1337w0rm/YeetMeet.git`
+2. `cd YeetMeet`
+3. `python3 -m pip install -r requirements.txt`
+4. Rename `YeetMeet/config.py` to something else.
+5. Rename `YeetMeet/RunLocallyConfig.py` to `config.py` .
+6. Rename `YeetMeet/bot/__init__.py` to something else.
+7. Rename `YeetMeet/bot/RunlocallyInit.py` to `__init__.py` .
+8. Set your `USERID`, `BOT_TOKEN` and `SCHEDULE` value in `config.py` .
+9. ( You can get your `USERID` from @userinfobot from Telegram, and `BOT_TOKEN` from @BotFather from Telegram. )
+10. `python3 chromium.py`
 
 ## Deploy to Heroku
 
-> Note: Login to your Google account from your local machine first by sending /mlogin or /zlogin command to your bot on Telegram, so that you don't have to re-login again and again on Heroku. This will create a meet.pkl or zoom.pkl file in your YeetMeet directory depending on the command sent to Telegram Bot respectively 
 
-For Zoom, logging in is kinda buggy right now. Will try to fix it in some weeks.
+You would need :
+1. Firefox, for making a profile your YeetMeet app will use.
+2. [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli#download-and-install) and [Heroku Account](https://www.heroku.com). 
+3. Git installed.
+4. Some patience.
+5. For remaining instructions, please read [this](https://github.com/1337w0rm/YeetMeet/blob/master/PLEASE_READ_THIS.md). or, watch video tutorials we posted on the telegram group.
 
-> Set ENVIRONMENT VARIABLES according to VARIABLES in [config.py](https://github.com/1337w0rm/YeetMeet/blob/master/config.py)
- OR
-See [How to edit config.py](https://github.com/1337w0rm/YeetMeet/issues/3#issuecomment-694277739)
 
-**Prerequisite**
- 
- 1. You need to have Python3 installed.
- 2. You need Heroku-CLI installed on your system. [Installation Guide Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli)
- 3. You need to have Google Chrome and Chromedriver installed and in your PATH Environment Variable.
- 
-**Deployment**
-1. Download and Install Google Chrome and Chromedriver.
- 2. `git clone https://github.com/1337w0rm/YeetMeet`
- 3. `cd YeetMeet`
- 4. `pip install -r requirements.txt`
- 5. `python chromium.py`
- 6. Login to your Google Account using `/mlogin`  for meet and `/zlogin` for Zoom. Wait till you get `Logged In` message from your bot.
- 7. Now through Heroku-CLI login to your Heroku account. 
- `heroku login -i`
- 8. Create a Heroku App `heroku create appname --buildpack heroku/python`
- 9. Set Chromedriver Builpack `heroku buildpacks:add https://github.com/heroku/heroku-buildpack-chromedriver -a appname`
- 10. Set Google Chrome buildpack `heroku buildpacks:add https://github.com/1337w0rm/heroku-buildpack-google-chrome -a appname`
- 11. **Optional** If you've set SCHEDULE to `True` you need to set your timezone on Heroku. `heroku config:add TZ="Asia/Kolkata"` change it to your timezone by using TZ="Your timezone". For India it is TZ="Asia/Kolkata"
- 
- 13. Initialize git repository  `git init`
- 14. Select this app in your Heroku-CLI `heroku git:remote -a appname`
- 15. Add all files to `git add .`
- 16. Commit the changes `git commit -am "Your commit message"`
- 17. Push Code to Heroku `git push heroku master`
- 18. Scale the dynos `heroku ps:scale worker=1`
+## Managing Heroku's Dynos so that your bot won't stop at near the end of the month 
 
+Heroku gives 500 hours/month for free 
+
+And, a month has 720 hours 
+
+So, your app would probably stop working earlier than the end of the month 
+
+To prevent that, you can 
+
+`heroku ps:scale worker=0`
+
+When you're not using it, that command will stop the app
+
+And again, when you want to start it , 
+
+`heroku ps:scale worker=1`
+
+Stopping app when you are not using it, will save hours/month (heroku calls it dynos) for you, so you won't have to redeploy, or will have to wake up early for classes when the end of month is near :)
+
+Also, you can do this ( turning app off or on ) right from your phone on Termux ( Turning on PC just for this might be pain in ass for some people ), so, if you don't know much regarding this, and you want a tutorial, you can ask us out on telegram group.

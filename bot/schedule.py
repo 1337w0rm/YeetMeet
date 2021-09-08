@@ -3,7 +3,7 @@ import csv
 app = input("This schedule is for which app (meet/zoom)?: ")
 
 if app == "meet":
-    with open('bot/meet.csv', 'w', newline='') as file:
+    with open('meet.csv', 'w', newline='') as file:
         writer = csv.writer(file)
 
         choice = 'y'
