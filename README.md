@@ -59,7 +59,7 @@ You would need:
 
 To run it locally:
 
-1. `git clone https;//github.com/vanshsantoshi/YeetMeet.git`
+1. `git clone https;//github.com/1337w0rm/YeetMeet.git`
 2. `cd YeetMeet`
 3. `python3 -m pip install -r requirements.txt`
 4. Rename `YeetMeet/config.py` to something else.
@@ -78,7 +78,7 @@ You would need :
 2. [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli#download-and-install) and [Heroku Account](https://www.heroku.com). 
 3. Git installed.
 4. Some patience.
-5. For remaining instructions, please read [this](https://github.com/vanshsantoshi/YeetMeet/blob/master/PLEASE_READ_THIS.txt). or, watch video tutorials we posted on the telegram group.
+5. For remaining instructions, please read [this](https://github.com/1337w0rm/YeetMeet/blob/master/PLEASE_READ_THIS.md). or, watch video tutorials we posted on the telegram group.
 
 
 ## Managing Heroku's Dynos so that your bot won't stop at near the end of the month 
