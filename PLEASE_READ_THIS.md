@@ -1,103 +1,78 @@
-Install firefox browser on your pc,
+## Setting up local browser
+ 1. Install **Firefox** browser on your PC.
+ 2. Open **Firefox** and enter **about:profiles** in the URL bar.
+ 3. Click make new profile.
+ 4. Give it a name that you can remember .
+ 5. Click "Launch the profile in new window"
+ 6. Change preferences and settings of that profile according to video i sent in telegram( You can skip the theme and looks changing stuff i did in the video, except that do everything else i did in the video )
+ 7. Now, restart **Firefox**
+ 8. Go to **about:profiles** again.
+ 9. You will notice that your default profile has changed to the one you've just made. **We dont want that** 
+ 10. So, choose your old default profile as default again, restart the browser
+ 11. Open about:profiles again, you will find yourself back to the old profile.
+ 12. Click "Launch profile in new window" in your profile you just made for **YeetMeet**
+ 
+## Setting up Accounts
+ 1. Now, go to Google and **login** to your **Google Account**.
+ 2. After that open `https://zoom.us`   
+ 3. Scroll down to last and find **Cookie Preference**
+ 4. Click on it. A pop up box will open.
+ 5. Slide the slider  present inside the pop up box to **Advertising Cookies**
+ 6. Click save, then click close the pop up box.
+ 7. Then, head to https://zoom.us/signin
+ 8. Sign in to your account using **Google**.
 
-Go to link about:profiles
-
-Click make new profile,
-
-Give it a name that you can remember 
-
-Click "Launch the profile in new window"
-
-Change preferences and settings of that profile according to video i sent in telegram
-( You can skip the theme and looks changing stuff i did in the video, except that do everything else i did in the video )
-
-Then, close both the browser windows entirely,
-
-then open firefox again as you normally would,
-
-Go to about:profiles again,
-
-You will notice that your default profile has changed to the one you've just made,
-we dont want that 
-
-So, choose your old default profile as default again, restart the browser
-
-Open about:profiles again, you will find yourself back to the old profile.
-
-Click "Launch profile in new window" in your profile you just made for yeetmeet
-
-Go to zoom.us
-
-Scroll down to last,
-
-Find "Cookie Preference"
-
-Click it, slide it to "Advertising Cookies"
-
-Click save, then click close.
-
-Then, head to zoom.us/signin
-
-Sign in to your account, before that make sure to tick the checkbox "Keep me Signed in"
-
-After logging in, never open any zoom link ever again except zoom.us on that profile ( through 
+**Note:** After logging in, never open any zoom link ever again except zoom.us on that profile ( through 
 opening zoom.us you can verify if you're still logged in on your that profile, 
 by seeing at the top right corner of page, you know ) 
-
 
 I'm asking to not open any other link again, because zoom very often clear the cookies.
 
 
-So, after zoom login, go normally login to google too, just like you do 
+9. After all the above steps, attend one zoom and one google meet meetings. It can  be your own meeting.
 
 
-After that, attend one zoom and one google meet meetings, it can just be 
-your own meeting.
-
-
-After that, your profile is ready, close that profile window
-
-Head to about:profiles again, 
-Click "Open Directory" on your yeetmeet profile ( make sure you are NOT opening the ".cache" one )
-
-After that , file manager will pop up, select ALL files and folder, and copy.
-
-Go to YeetMeetCode/bot/Profile folder and paste it ALL there.
-
-After that, Click "Remove profile" on that profile you made after copying, so you won't mess up with it again
+10. After that, your browser profile is ready, close that profile window
+11. Head to **about:profiles** again. Click **Open Directory** on your **YeetMeet** profile ( make sure you are NOT opening the ".cache" one )
+12. File manager will pop up, from there **select all files and folder** and copy.
+13. Now, go to YeetMeetCode/bot/Profile folder and paste the files that you just copied.
+14. Click "Remove profile" on that profile you made after copying, so you can't mess up with it again
 
 Open bot/zoom.py with a code editor ONLY, and find for word "Vansh Santoshi" , replace it with your name
 
+## Setting up Heroku
 
+ 1. Now, go to **Heroku** make new app or you can use old one.
+ 2. Go to App Settings --> Reveal Config Variables --> Add :
 
-Now, make new app on heroku, you can use old one too,
-
-Go to App Settings --> Reveal Config Variables --> Add :
 BOT_TOKEN   ( You can get this from @BotFather on telegram )
 USERID      ( You can get this from @userinfobot )
 SCHEDULE    ( Set to either True or False, according to your needs )
 
-Variables with their respective value.
+3. Click **Add Buildback**, under the same setting page, and add these:
 
-Click "Add Buildback", under the same setting page, and add this:
+    `https://github.com/buitron/firefox-buildpack`
 
-https://github.com/buitron/firefox-buildpack
-http://github.com/buitron/geckodriver-buildpack
-heroku/python
+    `http://github.com/buitron/geckodriver-buildpack`
 
-Now, head to your YeetMeetSourceCode folder in terminal and enter these commands
+    `heroku/python`
 
-heroku login -i
-rm .git -rf
-git init
-heroku git:remote -a <Your Heroku App Name Here>
-git add .
-git commit -am "YeetMeet Deploy"
-heroku buildpacks:add --index 1 heroku-community/apt
-git push heroku master
-heroku ps:scale worker=1
+4. Now, open your terminal and `cd` to your **YeetMeet** code directory.
+5. Now Login to Heroku ->`heroku login -i`
+6. Delete **.git** folder ->`rm .git -rf`
+7. Initialize git repository  with ->`git init`
+8. Select on which app to push the code.
 
-It'll take time to deploy, and i guess I'm not forgetting something to tell. Just send a message on YeetMeet telegram
-if you got any problems 
+    `heroku git:remote -a <Your Heroku App Name Here>`
+    **Note**: Your Heroku App Name Here is the name that you gave while creating the app on Heroku.
 
-There are video tutorials for it both in Linux and Windows, on the telegram group
+9. Add files for pushing -> `git add` .
+10. Commit Files -> `git commit -am "YeetMeet Deploy"`
+11. Add buildpack.
+
+    `heroku buildpacks:add --index 1 heroku-community/apt`
+
+12. Push the code -> `git push heroku master`
+13. Turn on Worker Dyno -> `heroku ps:scale worker=1`
+
+If you face any problem send a text on Just  YeetMeet Telegram Group.
