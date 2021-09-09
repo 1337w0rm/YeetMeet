@@ -40,7 +40,7 @@ I'm asking to not open any other link again, because zoom very often clear the c
 
 Open bot/zoom.py with a code editor ONLY, and find for word "Vansh Santoshi" , replace it with your name
 
-## Setting up Heroku
+# Setting up Heroku
 
  1. Now, go to **Heroku** make new app or you can use old one.
  2. Go to App Settings --> Reveal Config Variables --> Add :
@@ -49,30 +49,45 @@ BOT_TOKEN   ( You can get this from @BotFather on telegram )
 USERID      ( You can get this from @userinfobot )
 SCHEDULE    ( Set to either True or False, according to your needs )
 
-3. Click **Add Buildback**, under the same setting page, and add these:
+## First Deploy
+
+3. Now, open your terminal and `cd` to your **YeetMeet** code directory.
+4. Now Login to Heroku ->`heroku login -i`
+5. Delete **.git** folder ->`rm .git -rf`
+6. Initialize git repository  with ->`git init`
+7. Select on which app to push the code.
+
+    `heroku git:remote -a <Your Heroku App Name Here>`
+    **Note**: Your Heroku App Name Here is the name that you gave while creating the app on Heroku.
+
+8. Add files for pushing -> `git add .`
+9. Commit Files -> `git commit -am "YeetMeet Deploy"`
+10. Push the code -> `git push heroku master`
+11. Turn on Worker Dyno -> `heroku ps:scale worker=1`
+
+
+## Second and final deploy
+
+12. Click **Add Buildback**, under the setting page of your heroku app, and add these:
 
     `https://github.com/buitron/firefox-buildpack`
 
     `http://github.com/buitron/geckodriver-buildpack`
 
-    `heroku/python`
+13. Make an empty text file inside YeetMeet code folder, and name it anything.
 
-4. Now, open your terminal and `cd` to your **YeetMeet** code directory.
-5. Now Login to Heroku ->`heroku login -i`
-6. Delete **.git** folder ->`rm .git -rf`
-7. Initialize git repository  with ->`git init`
-8. Select on which app to push the code.
+14. Now, enter these on same terminal where you just did your first deploy.
 
-    `heroku git:remote -a <Your Heroku App Name Here>`
-    **Note**: Your Heroku App Name Here is the name that you gave while creating the app on Heroku.
+    `git add .`
 
-9. Add files for pushing -> `git add` .
-10. Commit Files -> `git commit -am "YeetMeet Deploy"`
-11. Add buildpack.
+    `git commit -am "Commit"`
 
     `heroku buildpacks:add --index 1 heroku-community/apt`
 
-12. Push the code -> `git push heroku master`
-13. Turn on Worker Dyno -> `heroku ps:scale worker=1`
+    `git push heroku master`
+
+15. Check if build and app launch was successful
+
+    `heroku logs --tail`
 
 If you face any problem send a text on Just  YeetMeet Telegram Group.

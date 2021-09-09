@@ -12,7 +12,7 @@ import time
 from os import execl
 from sys import executable
 from selenium.webdriver.common.action_chains import ActionChains
-from selenium.webdriver.common.keys import Keys 
+from selenium.webdriver.common.keys import Keys
 userId = Config.USERID
 def joinMeet(context, url_meet):
 
@@ -29,7 +29,6 @@ def joinMeet(context, url_meet):
 
     try:
         browser.get(url_meet)
-        time.sleep(3)   
         browser.save_screenshot("ss.png")
         context.bot.send_chat_action(chat_id=userId, action=ChatAction.UPLOAD_PHOTO)
         mid  = context.bot.send_photo(chat_id=userId, photo=open('ss.png', 'rb'), timeout = 120).message_id
@@ -46,22 +45,18 @@ def joinMeet(context, url_meet):
             mid = context.bot.send_photo(chat_id=userId, photo=open('ss.png', 'rb'), timeout = 120).message_id
             os.remove('ss.png')
         try:
-            browser.find_element_by_xpath("//span[@class='NPEfkd RveJvd snByac' and contains(text(), 'Ask to join')]").click()
-            time.sleep(10)
+            WebDriverWait(browser, 30).until(EC.visibility_of_element_located((By.XPATH, "//span[@class='NPEfkd RveJvd snByac' and contains(text(), 'Ask to join')]"))).click()
         except:
-            browser.find_element_by_xpath("//span[@class='NPEfkd RveJvd snByac' and contains(text(), 'Join now')]").click()
-            time.sleep(10)
-
+            WebDriverWait(browser, 30).until(EC.visibility_of_element_located((By.XPATH, "//span[@class='NPEfkd RveJvd snByac' and contains(text(), 'Join now')]"))).click()
         context.bot.delete_message(chat_id=userId ,message_id = mid)
 
         browser.save_screenshot("ss.png")
         context.bot.send_chat_action(chat_id=userId, action=ChatAction.UPLOAD_PHOTO)
         mid = context.bot.send_photo(chat_id=userId, photo=open('ss.png', 'rb'), timeout = 120).message_id
         os.remove('ss.png')
-        time.sleep(5)
         a = ActionChains(browser)
-        a.key_down(Keys.CONTROL).send_keys('D').key_up(Keys.CONTROL).perform()
-        a.key_down(Keys.CONTROL).send_keys('E').key_up(Keys.CONTROL).perform()
+        time.sleep(5)
+        a.key_down(Keys.CONTROL).send_keys('d' + 'e').key_up(Keys.CONTROL).perform()
         context.bot.delete_message(chat_id=userId ,message_id = mid)
         time.sleep(7)
         browser.save_screenshot("ss.png")
