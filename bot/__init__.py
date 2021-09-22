@@ -11,6 +11,8 @@ try:
  BASE_DIR = os.path.dirname(os.path.realpath(__file__))
  print(BASE_DIR)
  s = BASE_DIR + '/Profile/'
+ if not os.path.exists(s):
+  os.makedirs(s)
  print (s)
  q = '/app/vendor/firefox/firefox'
  binary = FirefoxBinary(q)
