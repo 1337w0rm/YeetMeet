@@ -11,7 +11,7 @@ from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from os import execl
 from sys import executable
-from bot import updater, dp, browser
+from bot import updater, dp, browser, restricted
 
 from bot.meet import meet
 from bot.zoom import zoom
@@ -21,12 +21,15 @@ if Config.SCHEDULE == True:
     from bot.zoom_schedule import zJobQueue
 
 userId = Config.USERID
+
+@restricted
 @run_async
 def exit(update, context):
     context.bot.send_message(chat_id=userId, text="Restarting bot, Please wait!")
     browser.quit()
     execl(executable, executable, "chromium.py")
 
+@restricted
 @run_async
 def status(update, context):
     browser.save_screenshot("ss.png")
@@ -34,6 +37,7 @@ def status(update, context):
     context.bot.send_photo(chat_id=userId, photo=open('ss.png', 'rb'), timeout = 120)
     os.remove('ss.png')
 
+@restricted
 @run_async
 def help(update, context):
     context.bot.send_message(chat_id=userId, text="""/meet <link> -   Bunk a Google Meet meeting

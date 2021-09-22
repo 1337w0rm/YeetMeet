@@ -3,7 +3,7 @@ from config import Config
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
-from bot import updater, browser
+from bot import updater, browser, restricted
 from telegram.ext import run_async
 from telegram import ChatAction
 import os
@@ -75,7 +75,7 @@ def joinMeet(context, url_meet):
     j.run_repeating(students, 20, 1000)
 
 
-
+@restricted
 @run_async
 def meet(update,context):
     logging.info("DOING")

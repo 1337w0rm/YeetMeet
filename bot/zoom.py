@@ -7,7 +7,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import NoSuchElementException
-from bot import updater, browser
+from bot import updater, browser, restricted
 from telegram.ext import run_async
 from telegram import ChatAction
 import os
@@ -119,6 +119,7 @@ def joinZoom(context, url_meet, passStr):
     j = updater.job_queue
     j.run_repeating(students, 20, 1000)
 
+@restricted
 @run_async
 def zoom(update, context):
     logging.info("DOING")
