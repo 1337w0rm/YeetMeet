@@ -19,7 +19,7 @@ try:
 	#profile = FirefoxProfile()
 	#profile.set_preference("dom.webdriver.enabled", False)
 	#profile.set_preference('useAutomationExtension', False)
-	#profile.set_preference("general.useragent.override", "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/60.0.3112.50 Safari/537.36")
+	#profile.set_preference("general.useragent.override", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.5414.74  Safari/537.36")
 	#profile.update_preferences()
 	desired = DesiredCapabilities.FIREFOX
 	options.add_argument("--disable-infobars")
